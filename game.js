@@ -1,6 +1,5 @@
 const canvas = document.querySelector("#game");
 const ctx = canvas.getContext("2d");
-const launchButton = document.querySelector("#launch");
 const restartButton = document.querySelector("#restart");
 const messageEl = document.querySelector("#message");
 const levelEl = document.querySelector("#level");
@@ -568,7 +567,6 @@ window.addEventListener("keyup", (event) => {
   keys.delete(event.code);
 });
 
-launchButton.addEventListener("click", launch);
 canvas.addEventListener("pointerdown", launch);
 restartButton.addEventListener("click", startGame);
 window.addEventListener("blur", () => keys.clear());

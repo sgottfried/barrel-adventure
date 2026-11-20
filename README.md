@@ -16,7 +16,7 @@ Then visit `http://localhost:8000`.
 
 - `Space`: launch from the current barrel
 - `R`: restart after game over
-- Click/tap the canvas or Launch button on touch devices
+- Click/tap the canvas to launch on touch devices
 
 Each new game uses a fresh random level sequence. Difficulty increases each level until level 8, then the game continues at max difficulty with new random layouts until all lives are gone.
 

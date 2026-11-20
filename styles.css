@@ -163,7 +163,10 @@ kbd {
   }
 
   .controls button {
-    width: 100%;
+    align-self: center;
+    width: auto;
+    padding: 0 14px;
+    font-size: 0.875rem;
   }
 }
 
@@ -173,14 +176,15 @@ kbd {
 .top-bar > div:first-child { flex: 1 1 40%; }
 .stats { flex: 1 1 60%; }
 
-/* Reserve room for status and touch controls on short, wide screens. */
+/* Keep touch controls beside the stage to maximize its height on phones. */
 @media (orientation: landscape) and (max-height: 600px) and (min-width: 480px) {
   .game-shell {
     --landscape-height: 100vh;
     --safe-top: env(safe-area-inset-top, 0px);
     --safe-bottom: env(safe-area-inset-bottom, 0px);
     display: grid;
-    grid-template-rows: 32px minmax(0, 1fr) 44px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: 32px minmax(0, 1fr);
     gap: 6px;
     width: 100%;
     height: var(--landscape-height);
@@ -195,6 +199,7 @@ kbd {
   }
 
   .top-bar {
+    grid-column: 1 / -1;
     flex-direction: row;
     align-items: center;
     gap: 12px;
@@ -228,9 +233,11 @@ kbd {
   }
 
   .stage-wrap {
-    /* 100px = status + controls + gaps + vertical padding.
+    grid-column: 1;
+    grid-row: 2;
+    /* 50px = status + gap + vertical padding.
        Include the border so the canvas itself stays exactly 16:9. */
-    width: min(100%, calc((var(--landscape-height) - 100px - var(--safe-top) - var(--safe-bottom) - 2px) * 16 / 9 + 2px));
+    width: min(100%, calc((var(--landscape-height) - 50px - var(--safe-top) - var(--safe-bottom) - 2px) * 16 / 9 + 2px));
     align-self: center;
     justify-self: center;
   }
@@ -245,6 +252,10 @@ kbd {
   }
 
   .controls {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: end;
+    justify-self: end;
     flex-direction: row;
     justify-content: center;
     align-items: stretch;
@@ -252,7 +263,11 @@ kbd {
     margin: 0;
   }
 
-  .controls button { width: 140px; }
+  .controls button {
+    width: auto;
+    padding: 0 10px;
+    font-size: 0.875rem;
+  }
 }
 
 @media (orientation: landscape) and (max-height: 600px) and (min-width: 480px) and (max-width: 740px) {
