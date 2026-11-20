@@ -172,3 +172,89 @@ kbd {
 .message { pointer-events: none; }
 .top-bar > div:first-child { flex: 1 1 40%; }
 .stats { flex: 1 1 60%; }
+
+/* Reserve room for status and touch controls on short, wide screens. */
+@media (orientation: landscape) and (max-height: 600px) and (min-width: 480px) {
+  .game-shell {
+    --landscape-height: 100vh;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    display: grid;
+    grid-template-rows: 32px minmax(0, 1fr) 44px;
+    gap: 6px;
+    width: 100%;
+    height: var(--landscape-height);
+    padding: calc(6px + var(--safe-top))
+      calc(8px + env(safe-area-inset-right, 0px))
+      calc(6px + var(--safe-bottom))
+      calc(8px + env(safe-area-inset-left, 0px));
+  }
+
+  @supports (height: 100dvh) {
+    .game-shell { --landscape-height: 100dvh; }
+  }
+
+  .top-bar {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+  }
+
+  .top-bar > div:first-child { flex: 0 0 auto; }
+
+  h1 { font-size: 1.25rem; }
+
+  .top-bar p,
+  .controls p { display: none; }
+
+  .stats {
+    flex: 1;
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+
+  .stats span {
+    flex: 1;
+    min-width: 0;
+    padding: 5px 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .stats strong {
+    display: inline;
+    font-size: 0.875rem;
+  }
+
+  .stage-wrap {
+    /* 100px = status + controls + gaps + vertical padding.
+       Include the border so the canvas itself stays exactly 16:9. */
+    width: min(100%, calc((var(--landscape-height) - 100px - var(--safe-top) - var(--safe-bottom) - 2px) * 16 / 9 + 2px));
+    align-self: center;
+    justify-self: center;
+  }
+
+  canvas { height: auto; }
+
+  .message {
+    top: 6px;
+    max-width: calc(100% - 12px);
+    padding: 5px 9px;
+    font-size: 0.75rem;
+  }
+
+  .controls {
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .controls button { width: 140px; }
+}
+
+@media (orientation: landscape) and (max-height: 600px) and (min-width: 480px) and (max-width: 740px) {
+  .top-bar > div:first-child { display: none; }
+}
