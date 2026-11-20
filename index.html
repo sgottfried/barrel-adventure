@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Barrel Adventure</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="top-bar" aria-label="Game status">
+        <div>
+          <h1>Barrel Adventure</h1>
+          <p>Time your launch, chain barrels, dodge hazards, and reach the flag.</p>
+        </div>
+        <div class="stats" aria-live="polite">
+          <span>Level <strong id="level">1</strong></span>
+          <span>Barrel <strong id="barrel">1/4</strong></span>
+          <span>Score <strong id="score">0</strong></span>
+          <span>Best <strong id="best">0</strong></span>
+          <span>Lives <strong id="lives">5</strong></span>
+          <span>Difficulty <strong id="difficulty">1</strong></span>
+        </div>
+      </section>
+
+      <section class="stage-wrap">
+        <canvas id="game" width="960" height="540" aria-label="Barrel Adventure game canvas"></canvas>
+        <div id="message" class="message">Press Space to launch</div>
+      </section>
+
+      <section class="controls" aria-label="Controls">
+        <button id="launch" type="button">Launch</button>
+        <button id="restart" type="button">Restart</button>
+        <p><kbd>Space</kbd> launches from a barrel. <kbd>R</kbd> restarts after game over.</p>
+      </section>
+    </main>
+
+    <script src="sounds.js"></script>
+    <script src="game.js"></script>
+  </body>
+</html>

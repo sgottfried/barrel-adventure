@@ -1,0 +1,17 @@
+{
+  "name": "barrel-adventure",
+  "version": "1.0.0",
+  "description": "A standalone canvas game. The player launches from barrel to barrel with the Space key and tries to reach the flag at the right edge of the screen.",
+  "main": "game.js",
+  "scripts": {
+    "test": "node --test tests/game.test.cjs",
+    "lint": "eslint game.js sounds.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.7.0",
+    "globals": "^17.7.0"
+  }
+}
